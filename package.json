@@ -1,0 +1,25 @@
+{
+  "name": "comfyui-dynamic-routes",
+  "version": "1.0.0",
+  "description": "Shuffle nodes after queue execution.",
+  "type": "module",
+  "scripts": {
+    "pub": "node scripts/pub.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shinich39/comfyui-dynamic-routes.git"
+  },
+  "keywords": [
+    "comfyui"
+  ],
+  "author": "shinich39 <shinich39@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shinich39/comfyui-dynamic-routes/issues"
+  },
+  "homepage": "https://github.com/shinich39/comfyui-dynamic-routes#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
