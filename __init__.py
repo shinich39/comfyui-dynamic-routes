@@ -8,8 +8,6 @@
 
 from .nodes.node import DynamicRoutes
 
-WEB_DIRECTORY = "./web/js"
-
 NODE_CLASS_MAPPINGS = {
   "DynamicRoutes": DynamicRoutes,
 }
