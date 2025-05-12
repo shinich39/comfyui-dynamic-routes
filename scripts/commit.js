@@ -7,10 +7,10 @@ const v = pkg.version;
 
 execSync("npm install --package-lock-only");
 
-const init = fs.readFileSync("__init__.py", "utf8").replace(/(\n@version: )([^\n])+/, `$1${v}`);
+const init = fs.readFileSync("__init__.py", "utf8").replace(/(\n@version: )([^\r\n]+)/, `$1${v}`);
 fs.writeFileSync("__init__.py", init, "utf8");
 
-const toml = fs.readFileSync("pyproject.toml", "utf8").replace(/(\nversion = )([^\n])+/, `$1"${v}"`);
+const toml = fs.readFileSync("pyproject.toml", "utf8").replace(/(\nversion = )([^\r\n]+)/, `$1"${v}"`);
 fs.writeFileSync("pyproject.toml", toml, "utf8");
 
 const d = new Intl.DateTimeFormat("en-US", {
