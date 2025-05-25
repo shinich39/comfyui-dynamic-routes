@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
+import 'dotenv/config';
 
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 
@@ -22,14 +23,22 @@ const d = new Intl.DateTimeFormat("en-US", {
 // 04/25/2025
 const date = d.format(Date.now());
 
-const commands = [
-  "git add .",
-  `git commit -m "Updated on ${date}"`,
-  `git push origin main`,
-];
+try {
+  execSync([
+    "git add .",
+    `git commit -m "Updated on ${date}"`,
+    `git push origin main`,
+  ].join(" && "));
+} catch(err) {
+  console.error(err);
+  process.exit(1);
+}
 
 try {
-  execSync(commands.join(" && "));
+  execSync([
+    `comfy --skip-prompt --no-enable-telemetry env`,
+    `comfy node publish --token ${process.env.API_TOKEN}`,
+  ].join(" && "));
 } catch(err) {
   console.error(err);
   process.exit(1);
