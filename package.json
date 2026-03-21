@@ -4,7 +4,7 @@
   "description": "Shuffle nodes after queue execution.",
   "type": "module",
   "scripts": {
-    "commit": "node scripts/commit.js"
+    "deploy": "node scripts/deploy.js"
   },
   "repository": {
     "type": "git",

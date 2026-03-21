@@ -2,6 +2,12 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import 'dotenv/config';
 
+const message = process.argv[2];
+if (!message) {
+  console.error("Usage: npm run deploy \"MESSAGE\"");
+  process.exit(1);
+}
+
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 
 const v = pkg.version;
@@ -20,13 +26,10 @@ const d = new Intl.DateTimeFormat("en-US", {
   day: "2-digit",
 });
 
-// 04/25/2025
-const date = d.format(Date.now());
-
 try {
   execSync([
     "git add .",
-    `git commit -m "Updated on ${date}"`,
+    `git commit -m "${message}"`,
     `git push origin main`,
   ].join(" && "));
 } catch(err) {
